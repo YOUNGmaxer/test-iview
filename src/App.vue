@@ -1,17 +1,32 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <br/>
+    <Button @click="isAlertOn = true">打开弹窗</Button>
+    <my-alert
+      :isAlertOn="isAlertOn"
+      @modalStatusChange="updateAlertOn"
+    ></my-alert>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import MyAlert from './components/MyAlert';
 
 export default {
   name: 'app',
   components: {
-    HelloWorld
+    MyAlert
+  },
+  data() {
+    return {
+      isAlertOn: false
+    }
+  },
+  methods: {
+    updateAlertOn(curStatus) {
+      this.isAlertOn = curStatus;
+    }
   }
 }
 </script>
